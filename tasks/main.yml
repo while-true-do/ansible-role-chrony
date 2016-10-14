@@ -1,0 +1,33 @@
+---
+- name: Remove ntpd, if needed
+  package:
+    name: ntp
+    state: removed
+  tags:
+    - time
+    - ntp
+    - common
+
+- name: Install chrony
+  package:
+    name: chrony
+    state: installed
+  notify: Enable and Start chronyd
+  tags:
+    - time
+    - ntp
+    - common
+
+- name: Configure chrony
+  template:
+    src: chrony.conf.j2
+    dest: /etc/chrony.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: Restart chronyd
+  tags:
+    - time
+    - ntp
+    - config
+    - common

@@ -1,0 +1,62 @@
+# {{ ansible_managed }}
+
+{% if chrony_cfg_serveroption %}
+{% for chrony_cfg_server in chrony_cfg_servers %}
+server {{ chrony_cfg_server }} {{ chrony_cfg_serveroption }}
+{% endfor %}
+{% else %}
+{% for chrony_cfg_server in chrony_cfg_servers %}
+server {{ chrony_cfg_server }}
+{% endfor %}
+{% endif %}
+
+driftfile {{ chrony_cfg_driftfile }}
+
+{% if chrony_cfg_stratumweight %}
+stratumweight {{ chrony_cfg_stratumweight }}
+{% endif %}
+{% if chrony_cfg_rtcsync =='true' %}
+rtcsync
+{% endif %}
+makestep {{ chrony_cfg_makestep }}
+
+{% if chrony_cfg_allows %}
+{% for chrony_cfg_allow in chrony_cfg_allows %}
+allow {{ chrony_cfg_allow }}
+{% endfor %}
+{% endif %}
+
+{% if chrony_cfg_local == 'true' %}
+{% if chrony_cfg_local_stratum %}
+local stratum {{ chrony_cfg_local_stratum }}
+{% endif %}
+{% if chrony_cfg_local_distance %}
+local distance {{ chrony_cfg_local_distance }}
+{% endif %}
+{% if chrony_cfg_local_orphan %}
+local orphan {{ chrony_cfg_local_orphan }}
+{% endif %}
+{% endif %}
+
+{% for chrony_cfg_bindcmdaddress in chrony_cfg_bindcmdaddresses %}
+bindcmdaddress {{ chrony_cfg_bindcmdaddress }}
+{% endfor %}
+
+{% if chrony_cfg_keyfile %}
+keyfile {{ chrony_cfg_keyfile }}
+{% endif %}
+{% if chrony_cfg_commandkey %}
+commandkey 1
+{% if chrony_cfg_generatecommandkey == 'true' %}
+generatecommandkey
+{% endif %}
+{% endif %}
+
+{% if chrony_cfg_noclientlog == 'true' %}
+noclientlog
+{% endif %}
+logchange {{ chrony_cfg_logchange }}
+logdir {{ chrony_cfg_logdir }}
+{% if chrony_cfg_log %}
+log {{ chrony_cfg_log }}
+{% endif %}
