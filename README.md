@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/while-true-do/ansible-role-chrony.svg?branch=master)](https://travis-ci.org/while-true-do/ansible-role-chrony)
+
 # Ansible Role: chrony
 | A role that installs chrony and configures it.
 
@@ -12,7 +14,7 @@ ansible-galaxy install while-true-do.chrony
 Github Link: <https://github.com/while-true-do/chrony>
 
 ```
-git clone https://github.com/while-true-do/chrony.git
+git clone https://github.com/while-true-do/chrony.git while-true-do.chrony
 ```
 
 ## Requirements
