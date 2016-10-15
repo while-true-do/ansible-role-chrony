@@ -5,7 +5,7 @@
 
 ## Installation
 
-Galaxy Link: <https://galaxy.ansible.com/while-true-do.chrony>
+Galaxy Link: <https://galaxy.ansible.com/while-true-do/chrony>
 
 ```
 ansible-galaxy install while-true-do.chrony
