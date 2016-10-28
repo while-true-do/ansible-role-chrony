@@ -9,9 +9,7 @@ server {{ chrony_cfg_server }} {{ chrony_cfg_serveroption }}
 server {{ chrony_cfg_server }}
 {% endfor %}
 {% endif %}
-
 driftfile {{ chrony_cfg_driftfile }}
-
 {% if chrony_cfg_stratumweight %}
 stratumweight {{ chrony_cfg_stratumweight }}
 {% endif %}
@@ -19,13 +17,11 @@ stratumweight {{ chrony_cfg_stratumweight }}
 rtcsync
 {% endif %}
 makestep {{ chrony_cfg_makestep }}
-
 {% if chrony_cfg_allows %}
 {% for chrony_cfg_allow in chrony_cfg_allows %}
 allow {{ chrony_cfg_allow }}
 {% endfor %}
 {% endif %}
-
 {% if chrony_cfg_local == 'true' %}
 {% if chrony_cfg_local_stratum %}
 local stratum {{ chrony_cfg_local_stratum }}
@@ -37,11 +33,9 @@ local distance {{ chrony_cfg_local_distance }}
 local orphan {{ chrony_cfg_local_orphan }}
 {% endif %}
 {% endif %}
-
 {% for chrony_cfg_bindcmdaddress in chrony_cfg_bindcmdaddresses %}
 bindcmdaddress {{ chrony_cfg_bindcmdaddress }}
 {% endfor %}
-
 {% if chrony_cfg_keyfile %}
 keyfile {{ chrony_cfg_keyfile }}
 {% endif %}
@@ -51,7 +45,6 @@ commandkey 1
 generatecommandkey
 {% endif %}
 {% endif %}
-
 {% if chrony_cfg_noclientlog == 'true' %}
 noclientlog
 {% endif %}
