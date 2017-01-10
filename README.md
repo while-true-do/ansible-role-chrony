@@ -11,10 +11,10 @@ Galaxy Link: <https://galaxy.ansible.com/while-true-do/chrony>
 ansible-galaxy install while-true-do.chrony
 ```
 
-Github Link: <https://github.com/while-true-do/chrony>
+Github Link: <https://github.com/while-true-do/ansible-role-chrony>
 
 ```
-git clone https://github.com/while-true-do/chrony.git while-true-do.chrony
+git clone https://github.com/while-true-do/ansible-role-chrony.git while-true-do.chrony
 ```
 
 ## Requirements
@@ -43,7 +43,7 @@ chrony_cfg_makestep: '10 3'
 Simple Example:
 
 ```
-- hosts: servers 
+- hosts: servers
   roles:
     - { role: while-true-do.chrony }
 ```
@@ -51,7 +51,7 @@ Simple Example:
 Advanced Example:
 
 ```
-- hosts: servers 
+- hosts: servers
   roles:
     - { role: while-true-do.chrony, chrony_cfg_servers: [ 0.centos.pool.ntp.org, 1.centos.pool.ntp.org ], chrony_cfg_logdir: '/var/log/chrony' }
 ```
