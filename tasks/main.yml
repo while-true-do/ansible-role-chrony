@@ -11,7 +11,7 @@
 - name: Install chrony
   package:
     name: chrony
-    state: installed
+    state: present
   notify: Enable and Start chronyd
   tags:
     - time
@@ -29,5 +29,5 @@
   tags:
     - time
     - ntp
-    - config
     - common
+    - config
