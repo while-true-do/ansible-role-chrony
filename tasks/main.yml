@@ -1,13 +1,4 @@
 ---
-- name: Remove ntpd, if needed
-  package:
-    name: ntp
-    state: removed
-  tags:
-    - time
-    - ntp
-    - common
-
 - name: Install chrony
   package:
     name: chrony
