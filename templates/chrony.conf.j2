@@ -1,55 +1,49 @@
 # {{ ansible_managed }}
 
-{% if chrony_cfg_serveroption %}
-{% for chrony_cfg_server in chrony_cfg_servers %}
-server {{ chrony_cfg_server }} {{ chrony_cfg_serveroption }}
+{% if wtd_chrony_cfg_serveroption %}
+{% for wtd_chrony_cfg_server in wtd_chrony_cfg_servers %}
+server {{ wtd_chrony_cfg_server }} {{ wtd_chrony_cfg_serveroption }}
 {% endfor %}
 {% else %}
-{% for chrony_cfg_server in chrony_cfg_servers %}
-server {{ chrony_cfg_server }}
+{% for wtd_chrony_cfg_server in wtd_chrony_cfg_servers %}
+server {{ wtd_chrony_cfg_server }}
 {% endfor %}
 {% endif %}
-driftfile {{ chrony_cfg_driftfile }}
-{% if chrony_cfg_stratumweight %}
-stratumweight {{ chrony_cfg_stratumweight }}
+driftfile {{ wtd_chrony_cfg_driftfile }}
+{% if wtd_chrony_cfg_stratumweight %}
+stratumweight {{ wtd_chrony_cfg_stratumweight }}
 {% endif %}
-{% if chrony_cfg_rtcsync =='true' %}
+{% if wtd_chrony_cfg_rtcsync =='true' %}
 rtcsync
 {% endif %}
-makestep {{ chrony_cfg_makestep }}
-{% if chrony_cfg_allows %}
-{% for chrony_cfg_allow in chrony_cfg_allows %}
-allow {{ chrony_cfg_allow }}
+makestep {{ wtd_chrony_cfg_makestep }}
+{% if wtd_chrony_cfg_allows %}
+{% for wtd_chrony_cfg_allow in wtd_chrony_cfg_allows %}
+allow {{ wtd_chrony_cfg_allow }}
 {% endfor %}
 {% endif %}
-{% if chrony_cfg_local == 'true' %}
-{% if chrony_cfg_local_stratum %}
-local stratum {{ chrony_cfg_local_stratum }}
+{% if wtd_chrony_cfg_local == 'true' %}
+{% if wtd_chrony_cfg_local_stratum %}
+local stratum {{ wtd_chrony_cfg_local_stratum }}
 {% endif %}
-{% if chrony_cfg_local_distance %}
-local distance {{ chrony_cfg_local_distance }}
+{% if wtd_chrony_cfg_local_distance %}
+local distance {{ wtd_chrony_cfg_local_distance }}
 {% endif %}
-{% if chrony_cfg_local_orphan %}
-local orphan {{ chrony_cfg_local_orphan }}
+{% if wtd_chrony_cfg_local_orphan %}
+local orphan {{ wtd_chrony_cfg_local_orphan }}
 {% endif %}
 {% endif %}
-{% for chrony_cfg_bindcmdaddress in chrony_cfg_bindcmdaddresses %}
-bindcmdaddress {{ chrony_cfg_bindcmdaddress }}
+{% for wtd_chrony_cfg_bindcmdaddress in wtd_chrony_cfg_bindcmdaddresses %}
+bindcmdaddress {{ wtd_chrony_cfg_bindcmdaddress }}
 {% endfor %}
-{% if chrony_cfg_keyfile %}
-keyfile {{ chrony_cfg_keyfile }}
+{% if wtd_chrony_cfg_keyfile %}
+keyfile {{ wtd_chrony_cfg_keyfile }}
 {% endif %}
-{% if chrony_cfg_commandkey %}
-commandkey 1
-{% if chrony_cfg_generatecommandkey == 'true' %}
-generatecommandkey
-{% endif %}
-{% endif %}
-{% if chrony_cfg_noclientlog == 'true' %}
+{% if wtd_chrony_cfg_noclientlog == 'true' %}
 noclientlog
 {% endif %}
-logchange {{ chrony_cfg_logchange }}
-logdir {{ chrony_cfg_logdir }}
-{% if chrony_cfg_log %}
-log {{ chrony_cfg_log }}
+logchange {{ wtd_chrony_cfg_logchange }}
+logdir {{ wtd_chrony_cfg_logdir }}
+{% if wtd_chrony_cfg_log %}
+log {{ wtd_chrony_cfg_log }}
 {% endif %}
