@@ -6,5 +6,8 @@ if [ -f requirements.yml ]; then
   ansible-galaxy install -r requirements.yml
 fi
 
-echo "*** Checking Syntax ***"
+echo "***  Syntax ***"
 ansible-playbook tests/test.yml -i tests/inventory --syntax-check
+
+echo "*** Linting ***"
+ansible-lint -Rv tests/test.yml
