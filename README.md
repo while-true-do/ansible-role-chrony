@@ -3,15 +3,19 @@
 # Ansible Role: chrony
 | A role that installs chrony and configures it.
 
+## Motivation
+
+chrony is a daemon which implements the Network Time Protocol (NTP).
+
 ## Installation
 
-Galaxy Link: <https://galaxy.ansible.com/while-true-do/chrony>
+Install from [Ansible Galaxy](https://galaxy.ansible.com/while-true-do/chrony)
 
 ```
 ansible-galaxy install while-true-do.chrony
 ```
 
-Github Link: <https://github.com/while-true-do/ansible-role-chrony>
+Install from [Github](https://github.com/while-true-do/ansible-role-chrony)
 
 ```
 git clone https://github.com/while-true-do/ansible-role-chrony.git while-true-do.chrony
@@ -19,30 +23,52 @@ git clone https://github.com/while-true-do/ansible-role-chrony.git while-true-do
 
 ## Requirements
 
-None.
+Used Modules:
+
+-   [package_module](http://docs.ansible.com/ansible/latest/modules/package_module.html)
+-   [service_module](http://docs.ansible.com/ansible/latest/modules/service_module.html)
+-   [template_module](http://docs.ansible.com/ansible/latest/modules/template_module.html)
 
 ## Dependencies
 
+None.
+
 ## Role Variables
 
-```
-# Examples from
+```yaml
+---
 # defaults/main.yml
-chrony_cfg_servers: [ 0.centos.pool.ntp.org, 1.centos.pool.ntp.org, 2.centos.pool.ntp.org, 3.centos.pool.ntp.org ]
-chrony_cfg_serveroption: ''
-chrony_cfg_stratumweight: ''
-chrony_cfg_driftfile: '/var/lib/chrony/drift'
-chrony_cfg_rtcsync: 'true'
-chrony_cfg_makestep: '10 3'
-...
 
+wtd_chrony_cfg_servers: [ 0.centos.pool.ntp.org, 1.centos.pool.ntp.org, 2.centos.pool.ntp.org, 3.centos.pool.ntp.org ]
+wtd_chrony_cfg_serveroption: ''
+wtd_chrony_cfg_stratumweight: ''
+wtd_chrony_cfg_driftfile: '/var/lib/chrony/drift'
+wtd_chrony_cfg_rtcsync: 'true'
+wtd_chrony_cfg_makestep: '10 3'
+
+wtd_chrony_cfg_allows: ''
+
+wtd_chrony_cfg_local: 'false'
+wtd_chrony_cfg_local_stratum: '10'
+wtd_chrony_cfg_local_distance: ''
+wtd_chrony_cfg_local_orphan: ''
+
+wtd_chrony_cfg_keyfile: '/etc/chrony.keys'
+
+wtd_chrony_cfg_bindcmdaddresses: [ '127.0.0.1', '::1' ]
+
+wtd_chrony_cfg_noclientlog: 'true'
+wtd_chrony_cfg_logchange: '0.5'
+wtd_chrony_cfg_logdir: '/var/log/chrony'
+# wtd_chrony_cfg_log: 'measurements statistics tracking'
+wtd_chrony_cfg_log: ''
 ```
 
 ## Example Playbook
 
 Simple Example:
 
-```
+```yaml
 - hosts: servers
   roles:
     - { role: while-true-do.chrony }
@@ -50,26 +76,40 @@ Simple Example:
 
 Advanced Example:
 
-```
+```yaml
 - hosts: servers
   roles:
-    - { role: while-true-do.chrony, chrony_cfg_servers: [ 0.centos.pool.ntp.org, 1.centos.pool.ntp.org ], chrony_cfg_logdir: '/var/log/chrony' }
+    - { role: while-true-do.chrony, wtd_chrony_cfg_servers: [ 0.centos.pool.ntp.org, 1.centos.pool.ntp.org ], wtd_chrony_cfg_logdir: '/var/log/chrony' }
 ```
+
+## Testing
+
+All tests are located in [test directory](./tests/).
+
+Basic testing:
+
+```
+bash ./tests/test-spelling.sh
+bash ./tests/test-ansible.sh
+```
+
+## Contribute / Bugs
+
+Thank you so much for considering to contribute. Every contribution helps us.
+We are really happy, when somebody is joining the hard work. Please have a look
+at the links first.
+
+-   [Code of Conduct](./docs/CODE_OF_CONDUCT.md)
+-   [Contribution Guidelines](./docs/CONTRIBUTING.md)
+-   [Create an issue or Request](https://github.com/while-true-do/ansible-role-chrony/issues)
+-   [See who was contributing already](https://github.com/while-true-do/ansible-role-chrony/graphs/contributors)
 
 ## License
 
 This work is licensed under a [BSD License](https://opensource.org/licenses/BSD-3-Clause).
 
-## Contribute / Bugs
-
-**bug reports:** <https://github.com/while-true-do/ansible-role-chrony/issues>
-
-**contributers:** <https://github.com/while-true-do/ansible-role-chrony/graphs/contributors>
-
 ## Author Information
 
-**blog:** <https://blog.while-true-do.org>
+Site: [while-true-do.org](https://while-true-do.org)
 
-**github:** <https://github.com/daniel-wtd>
-
-**contact:** [mail@while-true-do.org](mailto:mail@while-true-do.org)
+Mail: [hello@while-true-do.org](mailto:hello@while-true-do.org)
