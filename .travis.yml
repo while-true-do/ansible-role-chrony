@@ -1,6 +1,6 @@
 ---
 language: python
-python:
+python: 
   - "2.7"
   - "3.6"
 
@@ -24,7 +24,7 @@ install:
   - ansible --version
 
   # Link github repo to ansible-galaxy name
-  - ln -s  $PWD ../while-true-do.chrony
+  - ln -s  $PWD ../while_true_do.chrony
 
 # Run the tests
 script:

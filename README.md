@@ -9,16 +9,16 @@ chrony is a daemon which implements the Network Time Protocol (NTP).
 
 ## Installation
 
-Install from [Ansible Galaxy](https://galaxy.ansible.com/while-true-do/chrony)
+Install from [Ansible Galaxy](https://galaxy.ansible.com/while_true_do/chrony)
 
 ```
-ansible-galaxy install while-true-do.chrony
+ansible-galaxy install while_true_do.chrony
 ```
 
 Install from [Github](https://github.com/while-true-do/ansible-role-chrony)
 
 ```
-git clone https://github.com/while-true-do/ansible-role-chrony.git while-true-do.chrony
+git clone https://github.com/while-true-do/ansible-role-chrony.git while_true_do.chrony
 ```
 
 ## Requirements
@@ -71,7 +71,7 @@ Simple Example:
 ```yaml
 - hosts: servers
   roles:
-    - { role: while-true-do.chrony }
+    - { role: while_true_do.chrony }
 ```
 
 Advanced Example:
@@ -79,7 +79,7 @@ Advanced Example:
 ```yaml
 - hosts: servers
   roles:
-    - { role: while-true-do.chrony, wtd_chrony_cfg_servers: [ 0.centos.pool.ntp.org, 1.centos.pool.ntp.org ], wtd_chrony_cfg_logdir: '/var/log/chrony' }
+    - { role: while_true_do.chrony, wtd_chrony_cfg_servers: [ 0.centos.pool.ntp.org, 1.centos.pool.ntp.org ], wtd_chrony_cfg_logdir: '/var/log/chrony' }
 ```
 
 ## Testing
