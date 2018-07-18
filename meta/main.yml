@@ -6,7 +6,7 @@ galaxy_info:
   description: A role that installs chrony and configures it.
   company: while-true-do.org
 
-    github_branch: master
+  github_branch: master
   license: BSD
 
   min_ansible_version: 2.0
