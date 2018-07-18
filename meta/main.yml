@@ -1,6 +1,7 @@
 dependencies: []
 
 galaxy_info:
+  role_name: chrony
   author: while-true-do.org
   description: A role that installs chrony and configures it.
   company: while-true-do.org
