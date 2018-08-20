@@ -1,29 +1,37 @@
 # {{ ansible_managed }}
 
-{% if wtd_chrony_cfg_serveroption %}
+# Use public servers from the pool.ntp.org project.
+# Please consider joining the pool (http://www.pool.ntp.org/join.html).
 {% for wtd_chrony_cfg_server in wtd_chrony_cfg_servers %}
-server {{ wtd_chrony_cfg_server }} {{ wtd_chrony_cfg_serveroption }}
+server {{ wtd_chrony_cfg_server.name }} {{ wtd_chrony_cfg_server.options | default('') }}
 {% endfor %}
-{% else %}
-{% for wtd_chrony_cfg_server in wtd_chrony_cfg_servers %}
-server {{ wtd_chrony_cfg_server }}
-{% endfor %}
-{% endif %}
+
+# Record the rate at which the system clock gains/losses time.
 driftfile {{ wtd_chrony_cfg_driftfile }}
 {% if wtd_chrony_cfg_stratumweight %}
+
 stratumweight {{ wtd_chrony_cfg_stratumweight }}
 {% endif %}
-{% if wtd_chrony_cfg_rtcsync =='true' %}
+{% if wtd_chrony_cfg_rtcsync %}
+
+# Enable kernel synchronization of the real-time clock (RTC).
 rtcsync
 {% endif %}
+
+# Allow the system clock to be stepped in the first three updates
+# if its offset is larger than 1 second.
 makestep {{ wtd_chrony_cfg_makestep }}
 {% if wtd_chrony_cfg_allows %}
+
+# Allow NTP client access from local network.
 {% for wtd_chrony_cfg_allow in wtd_chrony_cfg_allows %}
 allow {{ wtd_chrony_cfg_allow }}
 {% endfor %}
 {% endif %}
-{% if wtd_chrony_cfg_local == 'true' %}
+{% if wtd_chrony_cfg_local %}
 {% if wtd_chrony_cfg_local_stratum %}
+
+# Serve time even if not synchronized to a time source.
 local stratum {{ wtd_chrony_cfg_local_stratum }}
 {% endif %}
 {% if wtd_chrony_cfg_local_distance %}
@@ -32,18 +40,27 @@ local distance {{ wtd_chrony_cfg_local_distance }}
 {% if wtd_chrony_cfg_local_orphan %}
 local orphan {{ wtd_chrony_cfg_local_orphan }}
 {% endif %}
+
 {% endif %}
 {% for wtd_chrony_cfg_bindcmdaddress in wtd_chrony_cfg_bindcmdaddresses %}
 bindcmdaddress {{ wtd_chrony_cfg_bindcmdaddress }}
 {% endfor %}
 {% if wtd_chrony_cfg_keyfile %}
+
+# Specify file containing keys for NTP authentication.
 keyfile {{ wtd_chrony_cfg_keyfile }}
 {% endif %}
-{% if wtd_chrony_cfg_noclientlog == 'true' %}
+{% if wtd_chrony_cfg_noclientlog %}
+
 noclientlog
 {% endif %}
+
 logchange {{ wtd_chrony_cfg_logchange }}
+
+# Specify directory for log files.
 logdir {{ wtd_chrony_cfg_logdir }}
 {% if wtd_chrony_cfg_log %}
+
+# Select which information is logged.
 log {{ wtd_chrony_cfg_log }}
 {% endif %}
