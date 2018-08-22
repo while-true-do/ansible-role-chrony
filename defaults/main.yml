@@ -1,26 +1,39 @@
 ---
 # defaults/main.yml
 
-wtd_chrony_cfg_servers: [ 0.centos.pool.ntp.org, 1.centos.pool.ntp.org, 2.centos.pool.ntp.org, 3.centos.pool.ntp.org ]
-wtd_chrony_cfg_serveroption: ''
-wtd_chrony_cfg_stratumweight: ''
-wtd_chrony_cfg_driftfile: '/var/lib/chrony/drift'
-wtd_chrony_cfg_rtcsync: 'true'
-wtd_chrony_cfg_makestep: '10 3'
+# for a complete set of options please have a look at
+# man chrony.conf
+# examples:
+# "minpoll 6"  -> minimum polling interval
+# "maxpoll 10" -> the maximum polling interval
+# "iburst"     -> the interval between the first four polls
+# options can be combined:
+# "minpoll 6 maxpoll 10 iburst"
+wtd_chrony_cfg_servers:
+ - name: 0.centos.pool.ntp.org
+   # options: "iburst"
+ - name: 1.centos.pool.ntp.org
+ - name: 2.centos.pool.ntp.org
+ - name: 3.centos.pool.ntp.org
 
-wtd_chrony_cfg_allows: ''
+wtd_chrony_cfg_stratumweight: ""
+wtd_chrony_cfg_driftfile: "/var/lib/chrony/drift"
+wtd_chrony_cfg_rtcsync: true
+wtd_chrony_cfg_makestep: "10 3"
 
-wtd_chrony_cfg_local: 'false'
-wtd_chrony_cfg_local_stratum: '10'
-wtd_chrony_cfg_local_distance: ''
-wtd_chrony_cfg_local_orphan: ''
+wtd_chrony_cfg_allows: ""
 
-wtd_chrony_cfg_keyfile: '/etc/chrony.keys'
+wtd_chrony_cfg_local: false
+wtd_chrony_cfg_local_stratum: "10"
+wtd_chrony_cfg_local_distance: ""
+wtd_chrony_cfg_local_orphan: ""
 
-wtd_chrony_cfg_bindcmdaddresses: [ '127.0.0.1', '::1' ]
+wtd_chrony_cfg_keyfile: "/etc/chrony.keys"
 
-wtd_chrony_cfg_noclientlog: 'true'
-wtd_chrony_cfg_logchange: '0.5'
-wtd_chrony_cfg_logdir: '/var/log/chrony'
-# wtd_chrony_cfg_log: 'measurements statistics tracking'
-wtd_chrony_cfg_log: ''
+wtd_chrony_cfg_bindcmdaddresses: [ "127.0.0.1", "::1" ]
+
+wtd_chrony_cfg_noclientlog: true
+wtd_chrony_cfg_logchange: "0.5"
+wtd_chrony_cfg_logdir: "/var/log/chrony"
+# wtd_chrony_cfg_log: "measurements statistics tracking"
+wtd_chrony_cfg_log: ""
