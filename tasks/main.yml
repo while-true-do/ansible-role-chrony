@@ -3,6 +3,7 @@
   package:
     name: chrony
     state: present
+  become: yes
   notify: Enable and Start chronyd
   tags:
     - time
@@ -16,6 +17,7 @@
     owner: root
     group: root
     mode: 0644
+  become: yes
   notify: Restart chronyd
   tags:
     - time

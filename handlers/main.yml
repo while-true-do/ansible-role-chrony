@@ -4,8 +4,10 @@
     name: chronyd
     state: started
     enabled: yes
+  become: yes
 
 - name: Restart chronyd
   service:
     name: chronyd
     state: restarted
+  become: yes
